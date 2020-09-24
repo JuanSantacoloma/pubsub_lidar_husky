@@ -37,6 +37,11 @@ class LIDAR_RYCSV:
 
         #new_msgLaserScan.ranges > 10 m   == 0
         #new_msgLaserScan.ranges < 0.5 m  == 0
+        i=0
+        while (i<(np.linalg.norm(new_msgRanges))):
+            if new_msgRanges[i]<0.5 or new_msgRanges[i]>10:
+                new_msgRanges[i] = 0
+            i+=1
 
         new_msgLaserScan.ranges = new_msgRanges
         self.newMsg = new_msgLaserScan
